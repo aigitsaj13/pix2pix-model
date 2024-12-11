@@ -112,3 +112,8 @@ The following hyperparameters are used in the code, along with their values:
 10. Dataset Parameters
 
     Dataset images must have the input and target images concatenated horizontally (side-by-side) for proper loading and splitting in the Pix2PixDataset class.
+
+
+
+Result: We see that in the initial stages, the quality of the reconstructed image is very low, but the more epochs we do, the better the quality of the output images becomes. If we want the quality to be better than this, we can go up to 100 epochs, but due to memory limitations, it was not possible for me to do this or change the hyperparameters.
+#According to the loss graph, we see that the loss for the Generator is decreasing with increasing epochs, but it takes a long time for the loss to decrease and the training process is not nearly stable.
