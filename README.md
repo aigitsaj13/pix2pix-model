@@ -48,3 +48,67 @@ Applications:
     Black-and-white image colorization.
     Style transfer.
     Image inpainting.
+
+
+The following hyperparameters are used in the code, along with their values:
+1. Generator and Discriminator Optimizers
+
+    Learning Rate (lr): 0.0002
+        Controls the step size during parameter updates.
+    Beta1 (betas[0]): 0.5
+        Decay rate for the first moment of the gradient in Adam optimizer.
+    Beta2 (betas[1]): 0.999
+        Decay rate for the second moment of the gradient in Adam optimizer.
+
+2. Batch Size
+
+    Value: 128
+        Number of image pairs processed in one forward/backward pass.
+
+3. Image Size
+
+    Value: (256, 256)
+        Images are resized to this dimension during preprocessing using the transforms.Resize function.
+
+4. Normalization
+
+    Mean: (0.5, 0.5, 0.5)
+        Applied to normalize each channel of the images.
+    Standard Deviation (std): (0.5, 0.5, 0.5)
+        Used for scaling the normalized images.
+
+5. L1 Loss Weight (lambda_L1)
+
+    Value: 100
+        Balances the adversarial loss and L1 loss in the generator's total loss function.
+
+6. PatchGAN Discriminator
+
+    Kernel Size: 4
+        Used in convolutional layers of the discriminator.
+    Stride: 2 (for downsampling layers) and 1 (for the final layers).
+    Padding: 1
+        Ensures proper alignment of feature maps.
+
+7. Training Epochs
+
+    Value: 50
+        Total number of iterations over the dataset.
+
+8. Dropout Probability in Generator's UpSampling Layers
+
+    Value: 0.5
+        Applied conditionally in upsampling layers to prevent overfitting.
+
+9. Activation Functions
+
+    LeakyReLU:
+        Negative slope: 0.2 (used in DownSample layers).
+    ReLU:
+        Used in UpSample layers.
+    Tanh:
+        Used as the final activation in the generator to scale output values to [-1, 1].
+
+10. Dataset Parameters
+
+    Dataset images must have the input and target images concatenated horizontally (side-by-side) for proper loading and splitting in the Pix2PixDataset class.
